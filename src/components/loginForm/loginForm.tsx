@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import LoginBtn from "@/components/login-btn";
 
 export function LoginForm() {
   const [error, setError] = useState("");
@@ -58,6 +59,7 @@ export function LoginForm() {
             Signup
           </Link>
         </div>
+        <LoginBtn />
       </CardContent>
     </Card>
   );

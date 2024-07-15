@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import AuthProvider from "@/context/AuthProviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ShadFlow",
-  description:
-    "Shadflow is a boilerplate designed to supercharge your web development workflow, leveraging the power of Next.js, Tailwind CSS, and Shadc UI. It provides a solid foundation for building modern websites - Created By Muhammad Kaif Nazeer",
+  title: "NextAuth Authentication",
+  description: "description",
 };
- 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,16 +18,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
+      <AuthProvider>
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </AuthProvider>
     </html>
   );
 }
